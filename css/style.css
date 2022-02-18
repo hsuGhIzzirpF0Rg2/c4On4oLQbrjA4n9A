@@ -1,0 +1,97 @@
+#jb{
+    height: 0;
+    width: 60%;
+    padding-bottom: 60%;
+    align-content: center;
+    background-color: #e2962e;
+    position: relative;
+    margin: 0 auto 0 auto;
+}
+#tongXingMa{
+    height: 0;
+    width: 95%;
+    padding-bottom: 95%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#cjlu{
+    color: white;
+    text-align: center;
+    padding-top: 3%;
+    padding-bottom: 4%;
+    font-size: 2rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+#infomationPad{
+    background-color: #fefefe;
+    margin-right: 4%;
+    margin-left: 4%;
+    /*height: 70%;*/
+    border: 2px solid #fefefe;
+    border-radius: 30px 30px;
+    box-shadow: 10px 10px 20px #666666;
+    padding: 10px 20px;
+}
+.persionalInformation{
+    font-size: 1.1rem;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+#empty1{
+    height: 100px;
+}
+#time2{
+    color: #e06411;
+    margin-bottom: 0;
+}
+.time{
+    font-size: 3rem;
+    text-align: center;
+    margin: -20px;
+    font-weight: bold;
+
+}
+#yiMiao{
+    color: #e2962e;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 50px;
+    font-size: 1rem;
+}
+#keTongXing{
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.button-shenPi{
+    width: 80%;
+    font-size: 1.4rem;
+    background-color: #7f7f7f;
+    color: #fefefe;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px 10px;
+}
+body{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background: linear-gradient(to bottom,  #3d87d0 0%,#3d87d0 15%,#fefefe 15%,#fefefe 82%,#3d87d0 82%,#3d87d0 100%);
+}
+html{
+    height: 100%;
+    width: 100%;
+    font-size: 250%;
+}
+* {
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}

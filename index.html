@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>量大通行码</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/qrcode.js"></script>
+    <script type="text/javascript">
+        var qrcode;
+        var xueHao = '我是学号';
+        $(document).ready(function (e) {
+            changeQRCode();
+            refreshTime2();
+        });
+
+        function changeQRCode() {
+            if (document.getElementsByTagName("img").length) {
+                document.getElementsByTagName("img")[0].remove();
+
+            }
+            qrcode = new QRCode(document.getElementById("tongXingMa"), {
+                height: document.getElementById("tongXingMa").offsetHeight,
+                width: document.getElementById("tongXingMa").offsetWidth,
+                colorDark: "#4e9553",
+                correctLevel: QRCode.CorrectLevel.L,
+            });
+            qrcode.makeCode('https://qywx.cjlu.edu.cn/WebServices/XSQJTXM.ashx?guid=' + xueHao.toString() + '&zt=7&ts=' + (Date.parse(new Date()) / 1000).toString());
+            setTimeout(changeQRCode, 3000);
+        }
+
+        function refreshTime2() {
+            var date = new Date();
+            document.getElementById("time2").textContent = date.getHours().toString() + ':' + date.getMinutes().toString() + ':' + date.getSeconds().toString();
+            setTimeout(refreshTime2, 1000);
+        }
+    </script>
+</head>
+<body>
+<script type="text/javascript">
+    //写cookies
+    function setCookie(name, value) {
+        var Days = 30;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+        document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+    }
+
+    //读取cookies
+    function getCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+
+        if (arr = document.cookie.match(reg)) return unescape(arr[2]);
+        else return null;
+    }
+
+    //删除cookies
+    function delCookie(name) {
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval = getCookie(name);
+        if (cval != null) document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+    }
+
+</script>
+<div id="cjlu">
+    中国计量大学
+</div>
+<div id="infomationPad">
+    <div class="persionalInformation" id="xm">姓名：姓名</div>
+    <div class="persionalInformation" id="xy">学院：信息工程系</div>
+    <div class="persionalInformation" id="bj">班级：电信191</div>
+    <div id="empty1"></div>
+    <div id="time1" class="time">1月11日</div>
+    <div id="time2" class="time">14:14:14</div>
+    <div id="jb">
+        <div id=tongXingMa></div>
+    </div>
+    <div id="yiMiao">已完成新冠疫苗接种</div>
+    <div id="keTongXing">可凭此码通行</div>
+    <div id="liHang" class="button-shenPi">离杭审批</div>
+    <div id="fanHang" class="button-shenPi">返杭审批</div>
+
+</div>
+
+<script type="text/javascript">
+    HTMLElement.prototype.__defineGetter__("currentStyle", function () {
+        return this.ownerDocument.defaultView.getComputedStyle(this, null);
+    });
+
+    var date = new Date();
+    document.getElementById("time1").textContent = (date.getMonth() + 1).toString() + '月' + date.getDay().toString() + '日';
+    var xm = getCookie('xm');
+    if (xm !== null) document.getElementById("xm").textContent = '姓名：' + xm;
+    var xy = getCookie('xy');
+    if (xy !== null) document.getElementById("xy").textContent = '学院：' + xy;
+    var bj = getCookie('bj');
+    if (bj !== null) document.getElementById("bj").textContent = '班级：' + bj;
+    var xh = getCookie('xh');
+    if (xh !== null) xueHao = xh;
+</script>
+
+<script type="text/javascript">
+    document.getElementById("liHang").onclick = function () {
+        if (document.getElementById("liHang").currentStyle.backgroundColor === "rgb(127, 127, 127)") {
+            document.getElementById("liHang").style.backgroundColor = "#3d87d0";
+        } else {
+            document.getElementById("liHang").style.backgroundColor = "#7f7f7f";
+        }
+    };
+    document.getElementById("fanHang").onclick = function () {
+        if (document.getElementById("fanHang").currentStyle.backgroundColor === "rgb(127, 127, 127)") {
+            document.getElementById("fanHang").style.backgroundColor = "#3d87d0";
+        } else {
+            document.getElementById("fanHang").style.backgroundColor = "#7f7f7f";
+        }
+    };
+    document.getElementById("yiMiao").onclick = function () {
+        if (document.getElementById("yiMiao").currentStyle.color === "rgb(226, 150, 46)") {
+            document.getElementById("yiMiao").style.color = "#fefefe";
+            document.getElementById("jb").style.backgroundColor = "#fefefe";
+        } else {
+            document.getElementById("yiMiao").style.color = "#e2962e";
+            document.getElementById("jb").style.backgroundColor = "#e2962e";
+        }
+    };
+    document.getElementById("xm").onclick = function (){setCookie('xm',prompt("输入姓名",(getCookie('xm')==null)?"姓名":getCookie('xm')));}
+    document.getElementById("xy").onclick = function (){setCookie('xy',prompt("输入学院",(getCookie('xy')==null)?"信息工程系":getCookie('xy')));}
+    document.getElementById("bj").onclick = function (){setCookie('bj',prompt("输入班级",(getCookie('bj')==null)?"电信202":getCookie('bj')));}
+    document.getElementById("tongXingMa").onclick = function (){setCookie('xh',prompt("输入学号",(getCookie('xh')===null)?"我是学号":getCookie('xh')));}
+</script>
+
+</body>
+</html>
